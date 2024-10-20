@@ -1,1 +1,1 @@
-// Configuración del servidor de Node.
+//seccion app 
