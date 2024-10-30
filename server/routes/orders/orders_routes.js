@@ -1,9 +1,8 @@
-const controller = require('../../PedidosYa.Web/controllers/other/directions_controller');
+const controller = require('../../PedidosYa.Web/controllers/orders/orders_controller');
 const router = require('express').Router();
 
 router.get('/', controller.getAll);
 router.get('/:id', controller.getById);
-router.get('/user/:id', controller.getByUser);
 
 router.post('/',controller.create);
 
