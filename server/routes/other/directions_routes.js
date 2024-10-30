@@ -1,4 +1,4 @@
-const controller = require('../../controllers/other/directions_controller');
+const controller = require('../../PedidosYa.Web/controllers/other/directions_controller');
 const router = require('express').Router();
 
 router.get('/', controller.getAll);
