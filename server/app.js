@@ -12,6 +12,14 @@ const PORT = 4090;
 app.use(express.json());
 app.use(cors());
 
+// Importando modelos:
+
+require('./PedidosYa.Data/models/User/user');
+
+// Importando rutas:
+
+// creando los endpoints:
+
 app.listen(PORT,() => {
     console.log(`Server listen on port http://localhost:${PORT}`)
 });
