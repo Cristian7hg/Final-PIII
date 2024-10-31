@@ -28,5 +28,4 @@ describe('User Controller - Create', () => {
             message: 'Ya existe un usuario con este email',
         });
     });
-    
 });
