@@ -39,7 +39,6 @@ const orders_details_routes = require('./routes/orders/orders_details_router');
 const orders_routes = require('./routes/orders/orders_routes');
 const directions_routes = require('./routes/other/directions_routes');
 const favorites_routes = require('./routes/other/favorites_routes');
-// const product_category_routes = require('./routes/products/product_category_routes');
 const commerce_category_routes = require('./routes/commerce/commerce_categorys_routes')
 const product_routes = require('./routes/products/product_routes');
 const routes_404 = require('./routes/404/404Routes');
@@ -61,15 +60,6 @@ sequelize.sync()
 .then(()=>{
     console.log('Database Connection was successfully'); 
     // servidor escuchando
-
-    // createUserTypes();
-    // createCommerceTypes();
-    // createSuperAdmin();
-    // createCommerce();
-    // createCommerceCategory();
-    // createProducts();
-    // createLocations();
-
     app.listen(PORT,() => {
         console.log(`Server listen on port http://localhost:${PORT}`)
     });
