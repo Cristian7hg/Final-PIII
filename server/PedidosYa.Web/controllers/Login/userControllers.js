@@ -1,6 +1,5 @@
 const User = require('../../../PedidosYa.Data/models/User/user');
 
-
 const Encryption = require('../../helpers/Encryption');
 
 const TokenConfig =  require('../../helpers/generateToken');
@@ -18,7 +17,6 @@ exports.getAll = async (req,res) =>{
         res.status(500).json({'error':error});
     }
 }
-
 
 exports.getById = async (req,res) =>{
     try {
@@ -43,8 +41,8 @@ exports.create = async (req,res) =>{
         const check = await User.findOne({where:{email}});
 
         if (check){
-            return res.json({
-                success: false,
+            return res.status(409).json({
+                success: false, 
                 message: 'Ya existe un usuario con este email',
             })
         }
