@@ -8,6 +8,7 @@ describe('User Controller - getAll', () => {
         jest.clearAllMocks();
     });
 
+    // Prueba para getAll
     test('should get all users', async () => {
         User.findAll.mockResolvedValue([{ id: 1, name: 'John' }]);
         
