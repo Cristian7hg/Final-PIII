@@ -47,4 +47,3 @@ orders.belongsTo(user, {foreignKey: 'user_id'});
 orders.belongsTo(direction, {foreignKey: 'direction_id'});
 
 module.exports = orders;
-
