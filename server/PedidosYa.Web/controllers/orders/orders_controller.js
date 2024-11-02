@@ -1,13 +1,14 @@
 const orders = require('../../../PedidosYa.Data/models/Orders/orders');
 
-exports.getAll = async (req,res) =>{
+exports.getAll = async (req, res) => {
     try {
         const Orders = await orders.findAll();
         res.status(200).json(Orders);
     } catch (error) {
-        res.status(500).json({'error':error});
+        console.error('Error al obtener órdenes:', error);
+        res.status(500).json({ error: error.message });
     }
-}
+};
 
 exports.getById = async (req,res) =>{
     try {
@@ -61,5 +62,3 @@ exports.delete = async (req,res) =>{
         res.status(500).json({'error':error});
     }
 }
-
-
