@@ -20,3 +20,8 @@ steps:
     npm install
     npm run dev
   displayName: 'npm install and build'
+
+- script: |
+    cd server
+    npm rebuild bcrypt
+  displayName: 'rebuild of bcrypt'
