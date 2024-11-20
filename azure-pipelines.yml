@@ -36,8 +36,6 @@ steps:
 - script: |
     cd server
     npm run dev
-    sleep 60  # Espera 10 segundos para que el servidor se inicie
-    pkill -f "node"  # Detiene el servidor
   displayName: 'npm build'
 
 - script: |

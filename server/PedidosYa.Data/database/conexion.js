@@ -8,21 +8,10 @@ const fs = require("fs");
 
 // La contrasena debe ser recibeya
 
-// const sequelize = new Sequelize('recibe_ya','root','Frosty16', {
-//     host:'localhost',
-//     dialect:'mysql',
-//     logging: false 
-// });
-
-const dbPath = path.join(
-    path.dirname(require.main.filename),
-    "PedidosYa.Data",
-    "database"
-  );
-  
-const sequelize = new Sequelize({
-    dialect: "sqlite",
-    storage: path.join(dbPath,"PedidosYa.sqlite")
-  });
+const sequelize = new Sequelize('recibe_ya','root','Frosty16', {
+    host:'localhost',
+    dialect:'mysql',
+    logging: false 
+});
 
 module.exports = sequelize;
