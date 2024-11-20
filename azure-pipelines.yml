@@ -18,5 +18,15 @@ steps:
 - script: |
     cd server
     npm install
+  displayName: 'npm install'
+
+- script: |
+    cd server
+    rm -rf node_modules package-lock.json
+    npm install --build-from-source bcrypt
+  displayName: 'Clean and reinstall dependencies'
+  
+- script: |
+    cd server
     npm run dev
-  displayName: 'npm install and build'
+  displayName: 'npm build'
