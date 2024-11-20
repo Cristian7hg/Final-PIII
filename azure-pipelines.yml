@@ -21,14 +21,11 @@ steps:
   displayName: 'npm install'
 
 - script: |
-    chmod +x ./node_modules/.bin/node-pre-gyp
-  displayName: 'Grant execute permissions to node-pre-gyp'
-
-- script: |
     cd server
-    npm rebuild bcrypt
-  displayName: 'rebuild of bcrypt'
-
+    rm -rf node_modules package-lock.json
+    npm install --build-from-source bcrypt
+  displayName: 'Clean and reinstall dependencies'
+  
 - script: |
     cd server
     npm run dev
