@@ -21,6 +21,10 @@ steps:
   displayName: 'npm install'
 
 - script: |
+    chmod +x ./node_modules/.bin/node-pre-gyp
+  displayName: 'Grant execute permissions to node-pre-gyp'
+
+- script: |
     cd server
     npm rebuild bcrypt
   displayName: 'rebuild of bcrypt'
