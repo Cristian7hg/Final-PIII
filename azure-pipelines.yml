@@ -5,6 +5,8 @@
 
 trigger:
 - Develop
+- qa
+- main
 
 pool:
   vmImage: ubuntu-latest
@@ -30,3 +32,8 @@ steps:
     cd server
     npm run dev
   displayName: 'npm build'
+
+- script: |
+    cd server
+    npm test
+  displayName: run 'Tests'
