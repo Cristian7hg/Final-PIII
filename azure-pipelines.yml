@@ -24,6 +24,11 @@ steps:
 
 - script: |
     cd server
+    npm install jest --save-dev
+  displayName: 'Install Jest'
+
+- script: |
+    cd server
     rm -rf node_modules package-lock.json
     npm install --build-from-source bcrypt
   displayName: 'Clean and reinstall dependencies'
