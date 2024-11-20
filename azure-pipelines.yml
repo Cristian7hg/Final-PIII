@@ -18,10 +18,14 @@ steps:
 - script: |
     cd server
     npm install
-    npm run dev
-  displayName: 'npm install and build'
+  displayName: 'npm install'
 
 - script: |
     cd server
     npm rebuild bcrypt
   displayName: 'rebuild of bcrypt'
+
+- script: |
+    cd server
+    npm run dev
+  displayName: 'npm build'
