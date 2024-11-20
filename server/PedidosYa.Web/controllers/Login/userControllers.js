@@ -35,6 +35,14 @@ exports.create = async (req,res) =>{
     try {
         const {name, lastName, accountType, photo, email, country, phone,zip,password} = req.body;
 
+        //! Verificacion de campos:
+        if (!name || !lastName || !accountType || !photo || !email || !country || !phone || !zip || !password){
+            return res.status(400).json({
+                success: false,
+                message: 'Bad request'
+            })
+        }
+        
         // Encriptacion de clave:
         const encryptedPassword = await Encryption.encrypt(password);
         
@@ -60,7 +68,7 @@ exports.create = async (req,res) =>{
           });
 
 
-        res.status(200).json({success: true,
+        res.status(201).json({success: true,
             user, message: 'registrado correctamente'});
 
     } catch (error) {
