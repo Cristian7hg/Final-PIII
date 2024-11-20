@@ -6,7 +6,7 @@ const { Sequelize } = require("sequelize");
 
 // La contrasena debe ser recibeya
 
-const sequelize = new Sequelize('recibe_ya','root','reyesledesma11', {
+const sequelize = new Sequelize('recibe_ya','root','Frosty16', {
     host:'localhost',
     dialect:'mysql',
     logging: false 
