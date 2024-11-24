@@ -6,7 +6,10 @@ const sequelize = require('./PedidosYa.Data/database/conexion');
 require('dotenv').config();
 
 const app = express();
-const PORT = 4090;
+
+app.set('port', process.env.PORT || 4090);
+
+const PORT = app.get('port');
 
 // Gestionando middlewares
 app.use(express.json());
