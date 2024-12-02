@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  
+
 - task: NodeTool@0
   inputs:
     versionSpec: '20.x'
@@ -46,7 +46,7 @@ steps:
 - script: |
     cd server
     npm run dev
-  displayName: 'npm build'
+  displayName: 'npm build-server'
 
 - script: |
     cd server
@@ -55,9 +55,10 @@ steps:
   
   # build the client
 - script: |
+    cd ..
     cd client
     npm start
-  displayName: 'npm build'
+  displayName: 'npm build-client'
 
   # Package server and client for deployment
 - task: PublishBuildArtifacts@1
