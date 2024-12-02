@@ -37,16 +37,16 @@ steps:
     npm install --build-from-source bcrypt
   displayName: 'Clean and reinstall dependencies'
   
-- script: |
-    cd client
-    npm install
-  displayName: 'npm install'
+# - script: |
+#     cd client
+#     npm install
+#   displayName: 'npm install'
 
 # Arreglando permisos de la dependencia del servidor del cliente
-- script: |
-    chmod +x ./node_modules/.bin/web-dev-server
-  workingDirectory: $(System.DefaultWorkingDirectory)/client
-  displayName: 'Fix permissions for web-dev-server'
+# - script: |
+#     chmod +x ./node_modules/.bin/web-dev-server
+#   workingDirectory: $(System.DefaultWorkingDirectory)/client
+#   displayName: 'Fix permissions for web-dev-server'
   
   # build the server
 - script: |
@@ -60,10 +60,10 @@ steps:
   displayName: run 'Tests'
   
   # build the client
-- script: |
-    cd client
-    npm start
-  displayName: 'npm build-client'
+# - script: |
+#     cd client
+#     npm start
+#   displayName: 'npm build-client'
 
   # Package server and client for deployment
 - task: PublishBuildArtifacts@1
@@ -73,9 +73,9 @@ steps:
     publishLocation: 'Container'
   displayName: 'Publish server artifacts'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: 'client'
-    ArtifactName: 'client-drop'
-    publishLocation: 'Container'
-  displayName: 'Publish client artifacts'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: 'client'
+#     ArtifactName: 'client-drop'
+#     publishLocation: 'Container'
+#   displayName: 'Publish client artifacts'
