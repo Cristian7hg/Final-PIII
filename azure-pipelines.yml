@@ -41,6 +41,12 @@ steps:
     cd client
     npm install
   displayName: 'npm install'
+
+# Arreglando permisos de la dependencia del servidor del cliente
+- script: |
+    chmod +x ./node_modules/.bin/web-dev-server
+  workingDirectory: $(System.DefaultWorkingDirectory)/client
+  displayName: 'Fix permissions for web-dev-server'
   
   # build the server
 - script: |
@@ -55,7 +61,6 @@ steps:
   
   # build the client
 - script: |
-    cd ..
     cd client
     npm start
   displayName: 'npm build-client'
