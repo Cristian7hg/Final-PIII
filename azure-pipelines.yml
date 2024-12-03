@@ -13,6 +13,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  azureSubscription: 'Azure subscription 1 (6806c22f-4b0c-489d-ae7b-ba08ef24f0e1)'
 
 steps:
 
@@ -91,14 +92,34 @@ steps:
     publishLocation: 'Container'
   displayName: 'Publish server artifact'
 
-# Deploy to Azure App Service
+# Deploy to Azure App Service - Dev
+#- task: AzureWebApp@1
+#  inputs:
+#    azureSubscription: 'Azure subscription 1 (6806c22f-4b0c-489d-ae7b-ba08ef24f0e1)'
+#    appType: 'webApp'
+#    appName: 'RecibeYaDev'
+#    package: '$(Build.ArtifactStagingDirectory)/server.zip'
+#  displayName: 'Deploy to Azure App Service'
+
+# Deploy to Azure App Service - QA
 - task: AzureWebApp@1
+  condition: eq(variables['Build.SourceBranchName'], 'qa')
   inputs:
-    azureSubscription: 'Azure subscription 1 (6806c22f-4b0c-489d-ae7b-ba08ef24f0e1)'
+    azureSubscription: '$(azureSubscription)'
     appType: 'webApp'
-    appName: 'RecibeYaDev'
+    appName: 'RecibeYaQA'
     package: '$(Build.ArtifactStagingDirectory)/server.zip'
-  displayName: 'Deploy to Azure App Service'
+  displayName: 'Deploy to Azure App Service (QA)'
+
+# Deploy to Production
+- task: AzureWebApp@1
+  condition: eq(variables['Build.SourceBranchName'], 'main')
+  inputs:
+    azureSubscription: '$(azureSubscription)'
+    appType: 'webApp'
+    appName: 'RecibeYaPro'
+    package: '$(Build.ArtifactStagingDirectory)/server.zip'
+  displayName: 'Deploy to Azure App Service (Production)'
 
 - script: |
     ls -R $(Build.ArtifactStagingDirectory)
