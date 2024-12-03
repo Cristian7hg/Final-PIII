@@ -58,7 +58,7 @@ steps:
     cd server
     npm test
   displayName: run 'Tests'
-  
+
   # build the client
 # - script: |
 #     cd client
@@ -97,8 +97,12 @@ steps:
     azureSubscription: 'Azure subscription 1 (6806c22f-4b0c-489d-ae7b-ba08ef24f0e1)'
     appType: 'webApp'
     appName: 'RecibeYaDev'
-    package: '$(Pipeline.Workspace)/server-drop/server.zip'
+    package: '$(Build.ArtifactStagingDirectory)/server.zip'
   displayName: 'Deploy to Azure App Service'
+
+- script: |
+    ls -R $(Build.ArtifactStagingDirectory)
+  displayName: 'List files in artifact staging directory'
 
 # - task: PublishBuildArtifacts@1
 #   inputs:
