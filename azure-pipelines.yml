@@ -66,12 +66,39 @@ steps:
 #   displayName: 'npm build-client'
 
   # Package server and client for deployment
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    PathtoPublish: 'server'
+#    ArtifactName: 'server-drop'
+#    publishLocation: 'Container'
+#  displayName: 'Publish server artifacts'
+
+# Archive server directory for deployment
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/server'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/server.zip'
+    replaceExistingArchive: true
+  displayName: 'Archive server directory'
+
+# Publish the zip file as an artifact
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'server'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/server.zip'
     ArtifactName: 'server-drop'
     publishLocation: 'Container'
-  displayName: 'Publish server artifacts'
+  displayName: 'Publish server artifact'
+
+# Deploy to Azure App Service
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1'
+    appType: 'webApp'
+    appName: 'RecibeYaDev'
+    package: '$(Pipeline.Workspace)/server-drop/server.zip'
+  displayName: 'Deploy to Azure App Service'
 
 # - task: PublishBuildArtifacts@1
 #   inputs:
