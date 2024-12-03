@@ -94,7 +94,7 @@ steps:
 # Deploy to Azure App Service
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Azure subscription 1'
+    azureSubscription: 'Azure subscription 1 (6806c22f-4b0c-489d-ae7b-ba08ef24f0e1)'
     appType: 'webApp'
     appName: 'RecibeYaDev'
     package: '$(Pipeline.Workspace)/server-drop/server.zip'
